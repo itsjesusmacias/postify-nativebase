@@ -7,8 +7,6 @@ import { useModal } from "../hooks";
 
 // types
 interface IProps {
-  showModal: boolean;
-  closeModal: () => void;
   body: string;
   reactions: number;
   title: string;
