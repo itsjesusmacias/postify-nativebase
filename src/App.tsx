@@ -1,17 +1,17 @@
-import { NativeBaseProvider, Box, Heading, VStack } from "native-base";
+// pages
+import { PostView } from "./pages";
 
-export default function App() {
-  const response = fetch("https://dummyjson.com/posts").then(
-    (data: unknown) => data
-  );
+// components
+import { NativeBaseProvider, Box, VStack } from "native-base";
 
-  return (
-    <NativeBaseProvider>
-      <Box padding={4}>
-        <VStack alignItems="center">
-          <Heading size="lg">Postify</Heading>
-        </VStack>
-      </Box>
-    </NativeBaseProvider>
-  );
-}
+const App = () => (
+  <NativeBaseProvider>
+    <Box padding={4}>
+      <VStack alignItems="center">
+        <PostView />
+      </VStack>
+    </Box>
+  </NativeBaseProvider>
+);
+
+export default App;
