@@ -6,16 +6,17 @@ import { useIsMounted } from "./useIsMounted";
 // types
 
 interface IOptions {
-  triggerPromiseOnMount?: () => void;
+  triggerPromiseOnMount?: boolean;
   deserializerFn?: (result: any) => void;
 }
 
 type PromiseFunction = (arr: any[]) => Promise<any>;
 
-interface PromiseState {
+interface IReturn {
   result: any;
-  error: string;
+  error: string | null;
   isLoading: boolean;
+  triggerPromise: () => void;
 }
 
 /**
@@ -31,7 +32,7 @@ interface PromiseState {
 const usePromise = (
   promiseFunction: PromiseFunction,
   { triggerPromiseOnMount, deserializerFn }: IOptions
-) => {
+): IReturn => {
   const isMounted = useIsMounted();
   const [state, setState] = useState({
     result: null,
